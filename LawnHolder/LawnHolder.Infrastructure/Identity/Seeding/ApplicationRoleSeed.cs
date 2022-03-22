@@ -22,7 +22,8 @@ public class ApplicationRoleSeed : ISeeder
         {
             "Admin",
             "User",
-            "Owner"
+            "Owner",
+            "Customer"
         };
 
         foreach (var roleName in roles)
