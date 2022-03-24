@@ -28,9 +28,12 @@
     <link href="~/theme/tabler/css/demo.min.css" rel="stylesheet"/>
     <link href="~/fonts/lineawesome/css/line-awesome.min.css" rel="stylesheet"/>
     <link href="~/theme/tabler/css/site.css" rel="stylesheet">
+    <link href="~/vendor/ej2/css/bootstrap5.css" rel="stylesheet" />
 
     @RenderSection("Styles", required: false)
 	
+    <script src="~/vendor/ej2/js/ej2.min.js"></script>
+
   </head>
   <body >
     <div class="page">
@@ -62,6 +65,7 @@
     <script src="~/theme/tabler/js/tabler.min.js"></script>
     <script src="~/theme/tabler/js/demo.min.js"></script>
     <script src="~/theme/tabler/js/site.js"></script>
+    <ejs-scripts></ejs-scripts>
 
 	@await Component.InvokeAsync("Notyf") 
 	@RenderSection("Scripts", required: false)
