@@ -48,6 +48,13 @@
                       </div>
                       <span asp-validation-for="ConfirmPassword" class="text-danger"></span>                          
                   </div>
+                  <div class="mb-2" style="text-align:center">
+                      <br />
+                      <input type="radio" id="Customer" name="AccountType" value="Customer">
+                      <label for="Customer">Customer&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+                      <input type="radio" id="Business" name="AccountType" value="Business">
+                      <label for="Business">Business</label>
+                  </div>
                   <div class="form-footer">
                       <button type="submit" class="btn btn-primary w-100">Register</button>
                   </div>

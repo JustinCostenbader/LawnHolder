@@ -22,7 +22,7 @@ public class ApplicationRoleSeed : ISeeder
         {
             "Admin",
             "User",
-            "Owner",
+            "Business",
             "Customer"
         };
 
