@@ -226,7 +226,7 @@ public class AccountController : BaseController<AccountController>
         ViewData["ReturnUrl"] = returnUrl;
         if (ModelState.IsValid)
         {
-            var user = new ApplicationUser { Id = Guid.NewGuid().ToString(), UserName = model.Email, Email = model.Email };
+            var user = new ApplicationUser { Id = Guid.NewGuid().ToString(), UserName = model.Email, Email = model.Email, FirstName = model.FirstName, LastName = model.FirstName };
             var result = await _userManager.CreateAsync(user, model.Password);
             if (result.Succeeded)
             {
@@ -235,11 +235,13 @@ public class AccountController : BaseController<AccountController>
                 if (model.AccountType == "Business")
                 {
                     await _userManager.AddToRoleAsync(user, "Business");
+                    await _userManager.AddToRoleAsync(user, "User");
                 }
                 
                 if (model.AccountType == "Customer")
                 {
                     await _userManager.AddToRoleAsync(user, "Customer");
+                    await _userManager.AddToRoleAsync(user, "User");
                 }
 
                 var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
