@@ -9,7 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace LawnHolder.Web.Areas.Dashboard.Controllers;
 
 [Area("Dashboard")]
-[Authorize]
+[Authorize(Roles = "Business")]
 [ApiExplorerSettings(IgnoreApi = true)]
 public partial class ScheduleController : BaseController<ScheduleController>
 {
