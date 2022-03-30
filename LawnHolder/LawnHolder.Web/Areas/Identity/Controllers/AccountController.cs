@@ -223,6 +223,8 @@ public class AccountController : BaseController<AccountController>
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
     {
+        returnUrl ??= "/dashboard/home";
+
         ViewData["ReturnUrl"] = returnUrl;
         if (ModelState.IsValid)
         {
