@@ -15,4 +15,6 @@ public class HomeController : BaseController<HomeController>
     public IActionResult About() => View();
     public IActionResult TOS() => View();
     public IActionResult Privacy() => View();
+    public IActionResult NearYou() => View();
+    public IActionResult Browse() => View();
 }
