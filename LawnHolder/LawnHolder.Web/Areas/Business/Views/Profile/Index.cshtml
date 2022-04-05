@@ -1,5 +1,82 @@
 ﻿@model LawnHolder.Domain.Entities.Settings.ApplicationSettings
+@using Syncfusion.EJ2
 @{
 	ViewData["Title"] = "Profile";
 }
+@{
+    var asyncSettings = new Syncfusion.EJ2.Inputs.UploaderAsyncSettings { SaveUrl = "/Upload/Save", RemoveUrl = "/Upload/Remove" };
+}
 
+<!-- Page Title -->
+<h2>Business Profile</h2>
+
+<!-- Company Name -->
+<fieldset class="form-fieldset">
+
+<div class="input-icon mb-3">
+    <label class="form-label required">Company Name</label>
+    <input type="text" value="" class="form-control">
+  </div>
+
+<!-- Contact Info -->
+<!-- Phone Number -->
+<div class="mb-3">
+    <label class="form-label required">Contact Number</label>
+    <input type="text" name="input-mask" class="form-control" data-mask="(000) 000-0000" data-mask-visible="true" placeholder="(00) 0000-0000" autocomplete="off"/>
+  </div>
+
+
+<!-- Areas Serviced: -->
+<div class="input-icon mb-3">
+    <label class="form-label required">Areas Serviced:</label>
+    <input type="text" value="" class="form-control" placeholder="ex. Easton, Bethlehem, Nazareth">
+  </div>
+
+<!-- Description -->
+<div class="mb-3">
+  <label class="form-label">Description</label>
+  <textarea class="form-control" name="example-textarea" rows="10" placeholder="Body goes here"></textarea>
+</div>
+
+<!-- Gallery -->
+<div id = "ControlRegion">
+    <label class="form-label">Gallery Images</label>
+              <div class="col-lg-4 control-section">
+        <div class="control_wrapper">
+            <ejs-uploader id="UploadFiles" removing="onFileRemove" dropArea=".control-fluid" asyncSettings="@asyncSettings">
+            </ejs-uploader>
+        </div>
+    </div>
+<style>
+    .control_wrapper {
+        max-width: 400px;
+        margin: auto;
+    }
+    .e-upload {
+        width: 100%;
+        position: relative;
+        margin-top: 15px;
+    }
+    .control_wrapper .e-upload .e-upload-drag-hover {
+        margin: 0;
+    }
+</style>
+<script>
+    function onFileRemove(args) {
+        args.postRawFile = false;
+    }
+    var dropElement = document.getElementsByClassName('control-fluid')[0];
+    function onChange (args) {
+        var uploadObj = document.getElementById("UploadFiles")
+        uploadObj.ej2_instances[0].autoUpload = args.checked;
+        uploadObj.ej2_instances[0].clearAll();
+    }
+</script>
+</div>
+
+
+<!-- Basic Pricing -->
+
+
+
+</fieldset>
