@@ -51,6 +51,10 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Folder Include="Areas\Business\Data\" />
+	  <Folder Include="Areas\Business\Models\" />
+	  <Folder Include="Areas\Customer\Data\" />
+	  <Folder Include="Areas\Customer\Models\" />
 	  <Folder Include="wwwroot\img\email\" />
 	</ItemGroup>
 
