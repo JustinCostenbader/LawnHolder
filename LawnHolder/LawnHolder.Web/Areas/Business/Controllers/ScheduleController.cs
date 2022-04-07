@@ -12,13 +12,13 @@ namespace LawnHolder.Web.Areas.Business.Controllers
 {
     [Area("Business")]
     [Authorize(Roles = "Business")]
-    public class SchedulerController : BaseController<SchedulerController>
+    public class ScheduleController : BaseController<ScheduleController>
     {
         public IActionResult Index()
         {
             _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
                 .Then("Business")
-                .ThenAction("Scheduler", "Index", "Scheduler", new { Area = "Business" });
+                .ThenAction("Schedule", "Index", "Schedule", new { Area = "Business" });
 
             return View();
         }

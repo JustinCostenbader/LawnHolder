@@ -2,11 +2,11 @@
 @using Syncfusion.EJ2;
 @using Syncfusion.EJ2.Schedule;
 @{
-	ViewData["Title"] = "Scheduler";
+	ViewData["Title"] = "Schedule";
 }
 
 <div id = "ControlRegion">
-<ejs-schedule id="schedule" height="550px" selectedDate="new DateTime(2018, 2, 15)">
+<ejs-schedule id="schedule" height="550px">
     <e-schedule-eventsettings dataSource="@ViewBag.datasource"></e-schedule-eventsettings>
 </ejs-schedule>
 </div>
