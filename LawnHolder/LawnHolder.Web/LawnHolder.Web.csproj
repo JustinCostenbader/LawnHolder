@@ -20,6 +20,7 @@
 	<ItemGroup>
 	  <Content Remove="Views\Home\Index1.cshtml" />
 	  <Content Remove="Views\Home\Index2.cshtml" />
+	  <Content Remove="Views\Home\Services.cshtml" />
 	</ItemGroup>
 
 	<ItemGroup>
