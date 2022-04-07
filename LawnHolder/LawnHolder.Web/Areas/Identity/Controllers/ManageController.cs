@@ -181,6 +181,60 @@ public class ManageController : BaseController<ManageController>
     }
 
     [HttpGet]
+    public async Task<IActionResult> UpdateBusinessInfo()
+    {
+        _breadcrumbs.StartAtAction("Dashboard", "Index", "Dashboard", new { Area = "Business" })
+            .Then("Manage Business Info");
+
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null)
+        {
+            throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+        }
+
+        var model = new UpdateBusinessInfoViewModel { StatusMessage = StatusMessage };
+        return View(model);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> UpdateBusinessInfo(UpdateBusinessInfoViewModel model)
+    {
+        if (!ModelState.IsValid)
+        {
+            return View(model);
+        }
+
+        var user = await _userManager.GetUserAsync(User);
+        if (user == null)
+        {
+            throw new ApplicationException($"Unable to load user with ID '{_userManager.GetUserId(User)}'.");
+        } else
+        {
+            user.CompanyName = model.CompanyName;
+            user.PhoneNumber = model.PhoneNumber;
+            user.ServicedAreas = model.ServicedAreas;
+            user.Description = model.Description;
+
+            var result = await _userManager.UpdateAsync(user);
+
+            if (result.Succeeded)
+            {
+                RedirectToAction("UpdateBusinessInfo");
+            } else
+            {
+                throw new ApplicationException($"Unexpected error occurred setting business info for user with ID '{user.Id}'.");
+            }
+        }
+
+        _logger.LogInformation("Updated Business Info successfully.");
+        _toast.Success("Your business info has been changed.");
+
+        return RedirectToAction(nameof(UpdateBusinessInfo));
+    }
+
+
+    [HttpGet]
     public async Task<IActionResult> SetPassword()
     {
         var user = await _userManager.GetUserAsync(User);
