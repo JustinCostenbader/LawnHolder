@@ -4,6 +4,7 @@ using LawnHolder.Infrastructure.Persistence.DbContexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,10 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LawnHolder.Infrastructure.Persistence.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220422143428_BusinessClass")]
+    partial class BusinessClass
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -22,7 +24,7 @@ namespace LawnHolder.Infrastructure.Persistence.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder, 1L, 1);
 
-            modelBuilder.Entity("LawnHolder.Domain.Entities.BusinessProfile", b =>
+            modelBuilder.Entity("LawnHolder.Domain.Entities.Business", b =>
                 {
                     b.Property<string>("BusinessId")
                         .HasColumnType("nvarchar(450)");
@@ -44,7 +46,7 @@ namespace LawnHolder.Infrastructure.Persistence.Migrations
 
                     b.HasKey("BusinessId");
 
-                    b.ToTable("BusinessProfile");
+                    b.ToTable("Business");
                 });
 
             modelBuilder.Entity("LawnHolder.Domain.Entities.ConfigurationItem", b =>
@@ -390,7 +392,7 @@ namespace LawnHolder.Infrastructure.Persistence.Migrations
 
             modelBuilder.Entity("LawnHolder.Domain.Entities.Identity.ApplicationUser", b =>
                 {
-                    b.HasOne("LawnHolder.Domain.Entities.BusinessProfile", "Business")
+                    b.HasOne("LawnHolder.Domain.Entities.Business", "Business")
                         .WithMany()
                         .HasForeignKey("BusinessId");
 

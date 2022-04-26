@@ -20,6 +20,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser, Applicati
     public DbSet<Member> Member { get; set; }
     public DbSet<Template> Template { get; set; }
     public DbSet<Log> ServiceLog { get; set; }
+    public DbSet<BusinessProfile> BusinessProfile { get; set; }
 
     protected override void OnModelCreating(ModelBuilder builder)
     {
