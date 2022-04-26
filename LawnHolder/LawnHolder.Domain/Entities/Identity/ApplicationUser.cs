@@ -16,14 +16,11 @@ public class ApplicationUser : IdentityUser<string>
     [Display(Name = "Last Name")]
     public string LastName { get; set; } = string.Empty;
 
-    [Display(Name = "Company Name")]
-    public string CompanyName { get; set; } = string.Empty;
+    [Display(Name = "Business Id")]
+    public string BusinessId { get; set; } = string.Empty;
 
-    [Display(Name = "Serviced Areas")]
-    public string ServicedAreas { get; set; } = string.Empty;
-
-    [Display(Name = "Description")]
-    public string Description { get; set; } = string.Empty;
+    [Display(Name = "Business")]
+    public BusinessProfile Business { get; set; }
 
     // https://docs.microsoft.com/en-us/aspnet/core/security/authentication/customize-identity-model?view=aspnetcore-6.0
     public virtual ICollection<ApplicationUserClaim> Claims { get; set; }
