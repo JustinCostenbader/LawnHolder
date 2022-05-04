@@ -10,7 +10,7 @@ namespace LawnHolder.Domain.Entities
     public class BusinessProfile
     {
         [Key]
-        public string BusinessId { get; set; }
+        public string BusinessId { get; set; } = Guid.NewGuid().ToString();
         
         [Required]
         [Display(Name = "Business Name")]

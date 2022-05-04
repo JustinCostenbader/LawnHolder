@@ -33,7 +33,7 @@ public class BusinessProfileController : BaseController<BusinessProfileControlle
 	    public string Description { get; set; }
 	}
 
-	private const string createBindingFields = "BusinessId,BusinessName,PhoneNumber,ServicedAreas,Description";
+	private const string createBindingFields = "BusinessName,PhoneNumber,ServicedAreas,Description";
     private const string editBindingFields = "BusinessId,BusinessName,PhoneNumber,ServicedAreas,Description";
     private const string areaTitle = "Business";
 
@@ -111,9 +111,13 @@ public class BusinessProfileController : BaseController<BusinessProfileControlle
 
         if (ModelState.IsValid)
         {
+            var user = await _userManager.GetUserAsync(User);
+
             _context.Add(businessProfile);
+            user.BusinessId = businessProfile.BusinessId;
+
             await _context.SaveChangesAsync();
-            
+
             _toast.Success("Created successfully.");
             
                 return RedirectToAction(nameof(Index));

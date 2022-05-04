@@ -17,7 +17,7 @@ public class ApplicationUser : IdentityUser<string>
     public string LastName { get; set; } = string.Empty;
 
     [Display(Name = "Business Id")]
-    public string BusinessId { get; set; } = string.Empty;
+    public string? BusinessId { get; set; } = string.Empty;
 
     [Display(Name = "Business")]
     public BusinessProfile Business { get; set; }
