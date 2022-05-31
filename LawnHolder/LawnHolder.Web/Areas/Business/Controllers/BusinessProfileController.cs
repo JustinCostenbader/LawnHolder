@@ -20,7 +20,7 @@ using LawnHolder.Domain.Entities.Identity;
 namespace LawnHolder.Web.Areas.Business.Controllers;
 
 [Area("Business")]
-[Authorize(Roles = "Business")]
+[Authorize(Roles = "Business,Admin")]
 public class BusinessProfileController : BaseController<BusinessProfileController>
 {
 	public class BusinessProfileIndexViewModel 
@@ -49,6 +49,7 @@ public class BusinessProfileController : BaseController<BusinessProfileControlle
     }
 
     // GET: Business/BusinessProfile
+    [Authorize]
     public IActionResult Index()
     {
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
@@ -61,6 +62,7 @@ public class BusinessProfileController : BaseController<BusinessProfileControlle
    }
 
     // GET: Business/BusinessProfile/Details/5
+    [Authorize]
     public async Task<IActionResult> Details(string id)
     {
         ViewData["AreaTitle"] = areaTitle;
@@ -84,6 +86,7 @@ public class BusinessProfileController : BaseController<BusinessProfileControlle
     }
 
     // GET: Business/BusinessProfile/Create
+    [Authorize(Roles = "Business")]
     public IActionResult Create()
     {
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
@@ -96,6 +99,7 @@ public class BusinessProfileController : BaseController<BusinessProfileControlle
     // POST: Business/BusinessProfile/Create
     // To protect from overposting attacks, enable the specific properties you want to bind to.
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    [Authorize(Roles = "Business")]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Create([Bind(createBindingFields)] BusinessProfile businessProfile)
@@ -126,13 +130,15 @@ public class BusinessProfileController : BaseController<BusinessProfileControlle
     }
 
     // GET: Business/BusinessProfile/Edit/5
+    [Authorize(Roles = "Business")]
     public async Task<IActionResult> Edit(string id)
     {
         ViewData["AreaTitle"] = areaTitle;
 
         _breadcrumbs.StartAtAction("Dashboard", "Index", "Home", new { Area = "Dashboard" })
         .ThenAction("Manage BusinessProfile", "Index", "BusinessProfile", new { Area = "Business" })
-        .Then("Edit BusinessProfile");     
+        .Then("Edit BusinessProfile");
+
 
         if (id == null)
         {
@@ -152,6 +158,7 @@ public class BusinessProfileController : BaseController<BusinessProfileControlle
     // POST: Business/BusinessProfile/Edit/5
     // To protect from overposting attacks, enable the specific properties you want to bind to.
     // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+    [Authorize (Roles = "Business")]
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(string id, [Bind(editBindingFields)] BusinessProfile businessProfile)
@@ -200,6 +207,7 @@ public class BusinessProfileController : BaseController<BusinessProfileControlle
     }
 
     // GET: Business/BusinessProfile/Delete/5
+    [Authorize (Roles = "Business")]
     public async Task<IActionResult> Delete(string id)
     {
         ViewData["AreaTitle"] = areaTitle;
@@ -224,6 +232,7 @@ public class BusinessProfileController : BaseController<BusinessProfileControlle
     }
 
     // POST: Business/BusinessProfile/Delete/5
+    [Authorize(Roles = "Business")]
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(string id)
